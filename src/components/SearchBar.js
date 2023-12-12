@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="mt-2">
+    <div className="mt-2 lg:w-full">
       <input
         type="text"
         placeholder="Enter the name in the planet"

@@ -20,36 +20,38 @@ const PlanetInfo = ({
 
   return (
     <div className="flex flex-col">
-    <div className="flex flex-col justify-start items-start w-[355px] h-auto pb-8 px-[13px] rounded-[10px] bg-white">
+    <div className="flex flex-col justify-start items-start w-[355px] lg:w-[592px] h-auto pb-8 px-[13px] lg:px-[30px] rounded-[10px] bg-white">
       <div className="flex flex-row w-full pl-[14.08px] mt-[31.08px] h-auto">
         <div className="flex relative w-[82px] h-[82px] flex-row">
           <Image src={image} fill alt={name} />
         </div>
 
-        <div className={`${montserrat.className} flex flex-col ml-[20px]`}>
-          <span className={`text-[14px] font-normal text-[#000]`}>Planet:</span>
-          <h2 className={`text-[18px] font-black uppercase mb-[20px]`}>
-            {editMode ? (
-              <input
-              className="flex min-w-[130px] w-[130px] outline-none"
-                type="text"
-                value={editedName}
-                onChange={(e) => setEditedName(e.target.value)}
-              />
-            ) : (
-              name
-            )}
-            <div className="text-[8px] font-light">
-            {editMode ? (
-              <>
-                <button onClick={onSaveEdit}>Salvar</button>
-                <button onClick={onCancelEdit}>Cancelar</button>
-              </>
-            ) : (
-              <button onClick={onEdit}>Editar Nome</button>
-            )}
-            </div>
-          </h2>
+        <div className={`${montserrat.className} flex flex-col lg:flex-row ml-[20px]`}>
+          <div className="lg:mr-[40px]">
+            <span className={`text-[14px] font-normal text-[#000]`}>Planet:</span>
+            <h2 className={`text-[18px] font-black uppercase mb-[20px]`}>
+              {editMode ? (
+                <input
+                className="flex min-w-[130px] w-[130px] outline-none"
+                  type="text"
+                  value={editedName}
+                  onChange={(e) => setEditedName(e.target.value)}
+                />
+              ) : (
+                name
+              )}
+              <div className="text-[8px] font-light">
+              {editMode ? (
+                <>
+                  <button onClick={onSaveEdit}>Salvar</button>
+                  <button onClick={onCancelEdit}>Cancelar</button>
+                </>
+              ) : (
+                <button onClick={onEdit}>Editar Nome</button>
+              )}
+              </div>
+            </h2>
+          </div>
 
           <div className={`flex flex-col w-full text-[14px]`}>
             <p className="flex w-full">

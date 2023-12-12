@@ -100,10 +100,10 @@ export default function Home() {
           />
         ) : (
         <div
-          className="componenteInicial flex flex-col lg:flex-row justify-start items-start w-[300px] lg:w-[800px] h-auto pb-8 mx-[7.5px] rounded-[10px]"
+          className="componenteInicial flex flex-col lg:flex-row justify-start items-start w-[300px] lg:w-[800px] pb-8 lg:pb-0 mx-[7.5px] rounded-[10px]"
           style={{ background: "rgba(0, 0, 0, 0.70)" }}
         >
-          <div className="flex justify-start w-full h-[220px] relative">
+          <div className="flex justify-start w-full h-[220px] lg:h-[400px] relative">
             <Image
               className="absolute rounded-[7.5px] lg:hidden"
               src="/mars.svg"
@@ -114,21 +114,23 @@ export default function Home() {
             <Image
               className="rounded-[7.5px] hidden lg:block"
               src="/mars.svg"
-              fill
+              layout='fill'
+              objectFit='cover'
               alt="Star Wars - Planet Search"
             />
             <Image
-              className="absolute z-50 right-[-45px] top-[23px] lg:left-[-60px]"
-              src="/spaceship.svg"
+              className="absolute z-50 right-[-60px] top-[38px] lg:left-[-60px] 
+              lg:top-[280px]"
+              src="/spaceship-2.png"
               width={285}
               height={229}
               alt="Star Wars - Planet Search"
             />
           </div>
 
-          <div className="flex flex-col w-full px-4 mt-4">
+          <div className="flex flex-col lg:justify-center lg:h-[400px] lg:items-center w-full px-4 mt-4 lg:mt-0 lg:px-[45px]">
             <p
-              className={`text-white w-full text-center text-[18px] font-normal leading-normal h-[97px] pt-2 ${montserrat.className}`}
+              className={`text-white w-full text-center text-[18px] font-normal leading-normal h-[97px] pt-2 lg:px-8 ${montserrat.className}`}
             >
               Discover all the information about Planets of the Star Wars Saga
             </p>
