@@ -22,8 +22,14 @@ const PlanetInfo = ({
     <div className="flex flex-col">
     <div className="flex flex-col justify-start items-start w-[355px] lg:w-[592px] h-auto pb-8 px-[13px] lg:px-[30px] rounded-[10px] bg-white">
       <div className="flex flex-row w-full pl-[14.08px] mt-[31.08px] h-auto">
-        <div className="flex relative w-[82px] h-[82px] flex-row">
-          <Image src={image} fill alt={name} />
+        <div className="flex relative w-[82px] h-[82px] flex-row object-cover">
+          <Image 
+            src={image}
+            alt={name}
+            width={82}
+            height={82}
+            priority={true}
+          />
         </div>
 
         <div className={`${montserrat.className} flex flex-col lg:flex-row ml-[20px]`}>

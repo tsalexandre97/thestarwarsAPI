@@ -1,31 +1,19 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import SearchBar from "../components/SearchBar";
-import PlanetInfo from "../components/PlanetInfo";
-import Footer from "../components/Footer";
-import Image from "next/image";
-import { Montserrat } from "next/font/google";
-const montserrat = Montserrat({ subsets: ["latin"] });
+"use client"
+import React, { useState, useEffect } from "react"
+import SearchBar from "../components/SearchBar"
+import PlanetInfo from "../components/PlanetInfo"
+import Footer from "../components/Footer"
+import Image from "next/image"
+import { Montserrat } from "next/font/google"
+const montserrat = Montserrat({ subsets: ["latin"] })
 
-const API_URL = "https://swapi.dev/api/planets/";
-const IMAGE_URLS = [
-  "https://cryptospro.com.br/planetas/planeta_0000_tatooine.png",
-  "https://cryptospro.com.br/planetas/planeta_0001_naboo.png",
-  "https://cryptospro.com.br/planetas/planeta_0002_mustafar.png",
-  "https://cryptospro.com.br/planetas/planeta_0003_kashyyyk.png",
-  "https://cryptospro.com.br/planetas/planeta_0004_hoth.png",
-  "https://cryptospro.com.br/planetas/planeta_0005_endor.png",
-  "https://cryptospro.com.br/planetas/planeta_0006_dagobah.png",
-  "https://cryptospro.com.br/planetas/planeta_0007_coruscant.png",
-  "https://cryptospro.com.br/planetas/planeta_0008_bespin.png",
-  "https://cryptospro.com.br/planetas/planeta_0009_alderaan.png",
-];
+const API_URL = "https://swapi.dev/api/planets/"
 
 export default function Home() {
-  const [planetData, setPlanetData] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const [editedName, setEditedName] = useState("");
-  const [searchClicked, setSearchClicked] = useState(false);
+  const [planetData, setPlanetData] = useState(null)
+  const [editMode, setEditMode] = useState(false)
+  const [editedName, setEditedName] = useState("")
+  const [searchClicked, setSearchClicked] = useState(false)
 
   const fetchPlanetData = async (searchTerm) => {
     try {
@@ -33,39 +21,64 @@ export default function Home() {
       if (!response.ok) {
         throw new Error(`Error fetching data: ${response.statusText}`);
       }
-
+  
       const data = await response.json();
       const planet = data.results[0];
-      const image = IMAGE_URLS[parseInt(planet.url.split("/").reverse()[1], 10)];
+  
+      const searchInArray = (term, array) => {
+        // Filtra o array para incluir apenas strings que contêm o termo pesquisado (ignorando maiúsculas e minúsculas)
+        return array.filter((item) =>
+          item.toLowerCase().includes(term.toLowerCase())
+        );
+      };
+  
+      const planetName = planet.name;
+      const IMAGE_URLS = [
+        "https://cryptospro.com.br/planetas/planeta_0000_tatooine.png",
+        "https://cryptospro.com.br/planetas/planeta_0001_naboo.png",
+        "https://cryptospro.com.br/planetas/planeta_0002_mustafar.png",
+        "https://cryptospro.com.br/planetas/planeta_0003_kashyyyk.png",
+        "https://cryptospro.com.br/planetas/planeta_0004_hoth.png",
+        "https://cryptospro.com.br/planetas/planeta_0005_endor.png",
+        "https://cryptospro.com.br/planetas/planeta_0006_dagobah.png",
+        "https://cryptospro.com.br/planetas/planeta_0007_coruscant.png",
+        "https://cryptospro.com.br/planetas/planeta_0008_bespin.png",
+        "https://cryptospro.com.br/planetas/planeta_0009_alderaan.png",
+      ];
+  
+      const matchingImages = searchInArray(planetName, IMAGE_URLS);
+      const image = matchingImages.length > 0 ? matchingImages[0] : null;
+  
       setPlanetData({ ...planet, image });
       setSearchClicked(true);
     } catch (error) {
       console.error("Error fetching planet data", error);
     }
   };
+  
 
   const handleSearch = (searchTerm) => {
-    fetchPlanetData(searchTerm);
-  };
+    fetchPlanetData(searchTerm)
+  }
 
   const handleBack = () => {
-    setSearchClicked(false);
-  };
+    setSearchClicked(false)
+  }
 
   const handleEdit = () => {
-    setEditMode(true);
-  };
+    setEditMode(true)
+  }
 
   const handleSaveEdit = () => {
-    setPlanetData((prevData) => ({ ...prevData, name: editedName }));
-    setEditMode(false);
-  };
+    setPlanetData((prevData) => ({ ...prevData, name: editedName }))
+    setEditMode(false)
+  }
 
   const handleCancelEdit = () => {
-    setEditMode(false);
+    setEditMode(false)
     // Se o usuário cancelar a edição, o nome editado deve voltar ao original
-    setEditedName(planetData.name);
-  };
+    setEditedName(planetData.name)
+  }
 
 
   return (
@@ -77,6 +90,7 @@ export default function Home() {
           width={209.26}
           height={210}
           alt="Star Wars - Planet Search"
+          priority={true}
         />
       </div>
 
@@ -103,12 +117,15 @@ export default function Home() {
               width={300}
               height={300}
               alt="Star Wars - Planet Search"
+              priority={true}
+
             />
             <Image
               className="rounded-[7.5px] hidden lg:block object-cover"
               src="/mars.svg"
               fill
               alt="Star Wars - Planet Search"
+              priority={true}
             />
             <Image
               className="absolute z-50 right-[-60px] top-[38px] lg:left-[-60px] 
@@ -117,6 +134,7 @@ export default function Home() {
               width={285}
               height={229}
               alt="Star Wars - Planet Search"
+              priority={true}
             />
           </div>
 
@@ -136,5 +154,5 @@ export default function Home() {
     </div>
       <Footer />
       </>
-  );
+  )
 }
