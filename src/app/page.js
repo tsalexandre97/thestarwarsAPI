@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import PlanetInfo from "../components/PlanetInfo";
-import Image from "next/image";
 import Footer from "../components/Footer";
+import Image from "next/image";
 import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -36,8 +36,7 @@ export default function Home() {
 
       const data = await response.json();
       const planet = data.results[0];
-      const image =
-        IMAGE_URLS[parseInt(planet.url.split("/").reverse()[1], 10)];
+      const image = IMAGE_URLS[parseInt(planet.url.split("/").reverse()[1], 10)];
       setPlanetData({ ...planet, image });
       setSearchClicked(true);
     } catch (error) {
@@ -68,12 +67,6 @@ export default function Home() {
     setEditedName(planetData.name);
   };
 
-  useEffect(() => {
-    if (!editMode && planetData) {
-      // Aqui você implementaria a lógica de reverter as alterações
-      // quando a página for atualizada
-    }
-  }, [editMode, planetData]);
 
   return (
     <>
@@ -112,10 +105,9 @@ export default function Home() {
               alt="Star Wars - Planet Search"
             />
             <Image
-              className="rounded-[7.5px] hidden lg:block"
+              className="rounded-[7.5px] hidden lg:block object-cover"
               src="/mars.svg"
-              layout='fill'
-              objectFit='cover'
+              fill
               alt="Star Wars - Planet Search"
             />
             <Image

@@ -10,9 +10,10 @@ const lato = Lato({
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [optionName, setOptionName] = useState(0);
 
   const handleSearch = () => {
-    onSearch(searchTerm);
+    onSearch(searchTerm, optionName);
   };
 
   return (
@@ -30,6 +31,7 @@ const SearchBar = ({ onSearch }) => {
         className="mr-2"
         width={18}
         height={18}
+        alt="Icon Search"
         />
         Search</button>
 
@@ -40,6 +42,7 @@ const SearchBar = ({ onSearch }) => {
             className="mr-2"
             width={16}
             height={16}
+            alt="Icon Filter"
           />
           Filter
         </div>
@@ -47,11 +50,27 @@ const SearchBar = ({ onSearch }) => {
         <div className="flex flex-row items-center justify-center h-[40px]">
           <Image 
             src="icon-down-arrow.svg" 
+            alt="Icon Down Arrow"
             className="mr-2"
             width={8}
             height={8}
           />
-          Name
+          <select className="bg-[#000]" onChange={(e) => setOptionName(e.target.value)}>
+          <option value="0">Name</option>
+          <option value="1">Tatooine</option>
+          <option value="2">Alderaan</option>
+          <option value="3">Yavin IV</option>
+          <option value="4">Hoth</option>
+          <option value="5">Dagobah</option>
+          <option value="6">Bespin</option>
+          <option value="7">Endor</option>
+          <option value="8">Naboo</option>
+          <option value="9">Coruscant</option>
+          <option value="10">Kamino</option>
+          <option value="11">Geonosis</option>
+          <option value="12">Utapau</option>
+          </select>
+          
         </div>
 
         <div className="flex flex-row items-center justify-center h-[40px]">
@@ -60,6 +79,7 @@ const SearchBar = ({ onSearch }) => {
             className="mr-2"
             width={8}
             height={8}
+            alt="Icon Down Arrow"
           />
           Population
         </div>

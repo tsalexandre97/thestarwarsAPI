@@ -82,7 +82,7 @@ const PlanetInfo = ({
         className={`flex flex-col w-full bg-[#F1F1F1] rounded-[8px] h-auto px-[16px] py-[14px] mt-[27px] ${montserrat.className}`}
       >
         <div className="flex flex-row w-full justify-start items-start">
-          <Image src="icon-residents.svg" width={15} height={15} />
+          <Image src="icon-residents.svg" width={15} height={15} alt="Icon Residents" />
           <p className="text-[#000] text-[14px] font-bold pl-1">Residents:</p>
         </div>
 
@@ -107,8 +107,8 @@ const PlanetInfo = ({
         className={`flex flex-col w-full bg-[#F1F1F1] rounded-[8px] h-auto px-[16px] py-[14px] mt-[9px] ${montserrat.className}`}
       >
         <div className="flex flex-row w-full justify-start items-start">
-          <Image src="icon-residents.svg" width={15} height={15} />
-          <p className="text-[#000] text-[14px] font-bold pl-1">Films:</p>
+          <Image src="icon-films.svg" width={15} height={15} alt="Icon Films" />
+          <p className="text-[#000] text-[14px] font-bold pl-1">Films ({films.length}):</p>
         </div>
 
         <span className="flex w-full h-[1px] bg-[#909090] mt-[6px]"></span>
@@ -131,7 +131,7 @@ const PlanetInfo = ({
       
     </div>
     <div className={`${montserrat.className} text-[14px] text-white font-normal flex w-full justify-end items-center mt-[37px]`}>
-    <Image src="icon-left-arrow.svg" className="mr-3" width={7} height={11} /><button onClick={onBack}>Voltar</button>
+    <Image src="icon-left-arrow.svg" className="mr-3" width={7} height={11}  alt="Icon Arrow" /><button onClick={onBack}>Voltar</button>
     </div>
     </div>
   );
